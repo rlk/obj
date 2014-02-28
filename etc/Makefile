@@ -1,6 +1,14 @@
 
 OPTS= $(shell /usr/local/bin/sdl2-config --cflags) -I. -I.. -Wall
-LIBS= $(shell /usr/local/bin/sdl2-config --libs) -framework OpenGL
+LIBS= $(shell /usr/local/bin/sdl2-config --libs)
+
+ifeq ($(shell uname), Linux)
+	LIBS += -lGL -lGLEW
+endif
+
+ifeq ($(shell uname), Darwir)
+	LIBS += -lframework
+endif
 
 example : example.o ../obj.o
 	c++ $(OPTS) -o $@ $^ $(LIBS)
