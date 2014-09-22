@@ -6,8 +6,8 @@ ifeq ($(shell uname), Linux)
 	LIBS += -lGL -lGLEW
 endif
 
-ifeq ($(shell uname), Darwir)
-	LIBS += -lframework
+ifeq ($(shell uname), Darwin)
+	LIBS += -framework OpenGL
 endif
 
 example : example.o ../obj.o
