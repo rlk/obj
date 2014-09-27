@@ -2165,6 +2165,7 @@ static void obj_render_prop(const obj *O, int mi, int ki)
             glUniformMatrix4fv(O->Mloc[ki], 1, GL_FALSE, T);
         }
     }
+    else glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 void obj_render_mtrl(const obj *O, int mi)
@@ -2175,7 +2176,7 @@ void obj_render_mtrl(const obj *O, int mi)
 
     for (ki = 0; ki < OBJ_PROP_COUNT; ki++)
     {
-        if (O->oloc[ki] >= 0 && obj_get_mtrl_map(O, mi, ki))
+        if (O->oloc[ki] >= 0)
         {
             glActiveTexture(GL_TEXTURE0 + ki);
             obj_render_prop(O, mi, ki);
