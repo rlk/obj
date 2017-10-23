@@ -1,6 +1,6 @@
 
-OPTS= $(shell /usr/local/bin/sdl2-config --cflags) -I. -I.. -Wall
-LIBS= $(shell /usr/local/bin/sdl2-config --libs)
+OPTS= $(shell sdl2-config --cflags) -I. -I.. -Wall
+LIBS= $(shell sdl2-config --libs)
 
 ifeq ($(shell uname), Linux)
 	LIBS += -lGL -lGLEW
